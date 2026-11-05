@@ -1,0 +1,47 @@
+@use '../styles/mixins' as m;
+.sec { position: relative; z-index: 1; background: var(--ink); padding: calc(var(--gutter) * 4) var(--gutter); }
+.mono { @include m.mono; color: var(--mute); margin: 0; }
+.h2 { @include m.display; font-weight: 500; margin: 0 0 2.5rem; font-size: clamp(2rem, 7vw, 6.5rem); line-height: 1;
+  em { font-family: var(--font-serif), serif; font-style: italic; font-weight: 400; text-transform: none; letter-spacing: -0.01em; color: var(--signal); } }
+.huge { font-size: clamp(2.6rem, 11vw, 11rem); line-height: 0.95; }
+.about { background: var(--bone); color: var(--ink); .mono { color: #55534f; } .h2 em { color: #d4491a; } }
+.aboutGrid { @include m.grid12; row-gap: 3rem; }
+.aboutText { grid-column: 1 / -1; font-size: clamp(1.125rem, 1rem + 0.8vw, 1.6rem); line-height: 1.4; @include m.up(md) { grid-column: 1 / 7; } p { margin: 0 0 1rem; max-width: 40ch; } }
+.chips { list-style: none; display: flex; flex-wrap: wrap; gap: 0.5rem; padding: 0; margin: 2rem 0 1.5rem;
+  li { @include m.mono; border: 1px solid currentColor; padding: 0.5rem 0.9rem; border-radius: 999px; } }
+.fig { grid-column: 1 / -1; position: relative; margin: 0; @include m.up(md) { grid-column: 8 / 13; }
+  svg { width: 100%; display: block; overflow: visible; } figcaption { @include m.mono; margin-top: 0.5rem; } }
+.ring { transform-origin: 200px 200px; animation: spin 40s linear infinite; }
+.ring.rev { animation-duration: 70s; animation-direction: reverse; }
+@keyframes spin { to { transform: rotate(360deg); } }
+.groups { @include m.grid12; row-gap: 2rem;
+  > div { grid-column: span 12; @include m.up(md) { grid-column: span 3; } }
+  h3 { @include m.mono; color: var(--mute); font-weight: 400; margin: 0 0 1rem; padding-top: 0.75rem; border-top: 1px solid var(--line); }
+  ul { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; gap: 0.4rem; }
+  li { @include m.mono; padding: 0.4rem 0.7rem; border: 1px solid var(--line); transition: background 0.25s, color 0.25s;
+    &:hover { background: var(--signal); color: var(--ink); border-color: var(--signal); } } }
+.marquee { contain: paint; overflow: hidden; margin-top: 3rem; white-space: nowrap;
+  > div { will-change: transform; display: inline-flex; gap: 3rem; padding-right: 3rem; animation: slide 45s linear infinite; will-change: transform; }
+  span { @include m.display; font-size: clamp(2rem, 5.5vw, 5rem); color: transparent; -webkit-text-stroke: 1px var(--bone); }
+  &.rev > div { animation-direction: reverse; } }
+@keyframes slide { to { transform: translateX(-50%); } }
+.wave { display: block; width: 100%; height: 38vh; border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
+.read { @include m.mono; display: flex; justify-content: space-between; margin: 0.75rem 0 3rem; color: var(--mute); }
+.log ol { list-style: none; margin: 0; padding: 0; }
+.log li { @include m.grid12; padding: 1.75rem 0; border-top: 1px solid var(--line);
+  .mono { grid-column: 1 / -1; @include m.up(md) { grid-column: 1 / 4; } }
+  div { grid-column: 1 / -1; @include m.up(md) { grid-column: 4 / 11; } }
+  h3 { margin: 0 0 0.25rem; font-weight: 500; font-size: clamp(1.25rem, 2.2vw, 1.9rem); }
+  p { margin: 0; color: var(--mute); max-width: 52ch; } }
+.contact { padding-bottom: calc(var(--gutter) * 5); }
+.copy { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: baseline; gap: 0.75rem; width: 100%; padding: 1.25rem 0; cursor: pointer;
+  background: none; color: var(--bone); border: 0; border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); font: inherit; text-align: left;
+  span:first-child { font-family: var(--font-display), sans-serif; font-size: clamp(1.1rem, 3.2vw, 2.6rem); overflow-wrap: anywhere; transition: color 0.25s; }
+  &:hover span:first-child { color: var(--signal); } }
+.tag { @include m.mono; color: var(--signal); }
+.links { list-style: none; display: flex; flex-wrap: wrap; gap: 1rem; padding: 0; margin: 2rem 0 0;
+  li { flex: 1 1 15rem; }
+  a { display: flex; justify-content: space-between; align-items: center; min-height: 76px; padding: 0 1.5rem; border: 1px solid var(--line); text-decoration: none;
+    font-family: var(--font-display), sans-serif; font-size: clamp(1.15rem, 2vw, 1.7rem); font-weight: 500; letter-spacing: -0.01em; transition: background 0.3s, color 0.3s, border-color 0.3s; }
+  a::after { content: '↗'; font-family: var(--font-body), sans-serif; font-size: 1.3em; }
+  a:hover { background: var(--signal); border-color: var(--signal); color: var(--ink); } }

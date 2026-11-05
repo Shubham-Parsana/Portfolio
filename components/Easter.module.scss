@@ -1,0 +1,2 @@
+.grid { position: fixed; inset: 0; z-index: 40; pointer-events: none; display: grid; grid-template-columns: repeat(12, 1fr); column-gap: var(--gutter); padding: 0 var(--gutter);
+  i { border-left: 1px solid var(--line); border-right: 1px solid var(--line); } }

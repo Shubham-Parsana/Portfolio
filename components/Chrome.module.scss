@@ -1,0 +1,16 @@
+@use '../styles/mixins' as m;
+.bar { position: fixed; inset: 0 0 auto; z-index: 60; display: flex; justify-content: space-between; align-items: center;
+  padding: 0.75rem var(--gutter); color: var(--bone); transition: color 0.3s; pointer-events: none; > * { pointer-events: auto; } }
+.logo { @include m.display; font-size: 1.1rem; text-decoration: none; }
+.nav { display: none; gap: 2rem; @include m.up(md) { display: flex; }
+  a { @include m.mono; text-decoration: none; } a:hover { text-decoration: underline; text-underline-offset: 6px; } }
+.menuBtn { @include m.mono; min-height: 44px; padding: 0 1.1rem; background: none; color: inherit; border: 1px solid currentColor; cursor: pointer; }
+.menu { position: fixed; inset: 0; z-index: 55; background: var(--ink); display: flex; flex-direction: column; justify-content: center; padding: var(--gutter);
+  a { @include m.display; font-size: clamp(2.5rem, 9vw, 7rem); line-height: 1.05; text-decoration: none; }
+  a:hover { color: var(--signal); }
+  .mail { @include m.mono; font-size: 0.75rem; margin-top: 2rem; text-transform: none; } }
+.counter, .clock { @include m.mono; position: fixed; bottom: 1rem; z-index: 60; margin: 0; color: var(--bone); transition: color 0.3s; pointer-events: none; }
+.counter { left: var(--gutter); }
+.clock { right: var(--gutter); }
+.bar[data-light='true'], .counter[data-light='true'], .clock[data-light='true'] { color: var(--ink); }
+.paper { color: var(--ink); }

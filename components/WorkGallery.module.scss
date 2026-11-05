@@ -1,0 +1,33 @@
+@use '../styles/mixins' as m;
+.work { position: relative; z-index: 1; background: var(--ink); overflow: hidden; @include m.up(md) { height: 100svh; } }
+.track { list-style: none; margin: 0; padding: 5rem var(--gutter) 3rem; display: flex; flex-direction: column; gap: 1.5rem; will-change: transform;
+  @include m.up(md) { flex-direction: row; width: max-content; height: 100%; padding-bottom: 4rem; gap: 2vw; } }
+.panel { padding: 1.5rem; @include m.up(md) { flex: none; width: 34vw; } p { margin: 0; } }
+.mono { @include m.mono; color: var(--mute); }
+.h2 { @include m.display; font-weight: 500; margin: 0 0 1rem; font-size: clamp(2.2rem, 6vw, 6rem); line-height: 1; }
+.intro { display: flex; flex-direction: column; justify-content: flex-end; padding-left: 0; @include m.up(md) { width: 30vw; } }
+.card { position: relative; display: flex; flex-direction: column; gap: 0.85rem; overflow: hidden; border: 1px solid var(--line); background: linear-gradient(180deg, var(--ink-2), #0d0d0f);
+  transition: transform 0.5s var(--ease-out), border-color 0.3s, box-shadow 0.4s;
+  h3 { margin: 0; font-size: clamp(1.4rem, 2.2vw, 2.1rem); font-weight: 500; line-height: 1.1; a { text-decoration: none; } a:hover { color: var(--signal); } }
+  &:hover { transform: translateY(-8px); border-color: var(--signal); box-shadow: 0 24px 60px -28px rgba(255, 107, 44, 0.5); } }
+.top { @include m.mono; display: flex; justify-content: space-between; gap: 1rem; padding-bottom: 0.75rem; border-bottom: 1px solid var(--line); color: var(--mute); }
+.fig { position: relative; flex: 1; min-height: 130px; overflow: hidden; border: 1px solid var(--line);
+  &::before { content: ''; position: absolute; inset: 0; opacity: 0.35; background: radial-gradient(circle, var(--bone) 0 1px, transparent 1.5px) 0 0 / 9px 9px;
+    -webkit-mask-image: linear-gradient(135deg, #000, transparent 80%); mask-image: linear-gradient(135deg, #000, transparent 80%); }
+  svg { position: absolute; inset: 0; width: 100%; height: 100%; padding: 14% 6%; }
+  path { fill: none; stroke: var(--bone); stroke-width: 1.5; vector-effect: non-scaling-stroke; transition: stroke 0.3s; } }
+.card:nth-child(even) .fig::before { -webkit-mask-image: linear-gradient(225deg, #000, transparent 80%); mask-image: linear-gradient(225deg, #000, transparent 80%); }
+.card:hover .fig path { stroke: var(--signal); }
+.num { @include m.display; position: absolute; right: 0.75rem; bottom: 0.25rem; font-size: clamp(3.5rem, 7vw, 7rem); line-height: 1; color: transparent; -webkit-text-stroke: 1px rgba(233, 230, 223, 0.45); }
+.mark { position: absolute; width: 12px; height: 12px; color: var(--mute); transition: color 0.3s;
+  background: linear-gradient(currentColor, currentColor) center / 100% 1px no-repeat, linear-gradient(currentColor, currentColor) center / 1px 100% no-repeat; }
+.card:hover .mark { color: var(--signal); }
+.tl { top: 5px; left: 5px; } .tr { top: 5px; right: 5px; } .bl { bottom: 5px; left: 5px; } .br { bottom: 5px; right: 5px; }
+.tags { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; gap: 0.35rem;
+  li { @include m.mono; padding: 0.3rem 0.6rem; border: 1px solid var(--line); transition: background 0.25s, color 0.25s; }
+  li:hover { background: var(--signal); color: var(--ink); border-color: var(--signal); } }
+.links { display: flex; gap: 1.25rem; a { @include m.mono; min-height: 44px; display: inline-flex; align-items: center; text-underline-offset: 5px; } a:hover { color: var(--signal); } }
+.more { display: flex; flex-direction: column; justify-content: flex-end; gap: 1rem; border: 1px dashed var(--line);
+  ul { list-style: none; margin: 0; padding: 0; }
+  li { @include m.display; font-weight: 500; font-size: clamp(1.4rem, 2.6vw, 2.4rem); padding: 0.4rem 0; border-top: 1px solid var(--line); display: flex; justify-content: space-between; align-items: baseline; gap: 1rem;
+    a { text-decoration: none; } a:hover { color: var(--signal); } span { @include m.mono; color: var(--mute); } } }

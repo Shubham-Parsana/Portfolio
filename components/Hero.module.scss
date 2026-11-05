@@ -1,0 +1,35 @@
+@use '../styles/mixins' as m;
+.hero { @include m.grid12; position: relative; z-index: 1; min-height: 100svh; align-content: end; row-gap: 2.5rem; padding: 9rem var(--gutter) 4.5rem; }
+.hud { @include m.mono; position: absolute; top: 4.75rem; left: var(--gutter); right: var(--gutter); display: flex; justify-content: space-between; gap: 1rem; margin: 0; color: var(--mute);
+  span:nth-child(3), span:nth-child(4) { display: none; @include m.up(md) { display: inline; } } }
+.corner { position: absolute; width: 14px; height: 14px; color: var(--mute);
+  background: linear-gradient(currentColor, currentColor) center / 100% 1px no-repeat, linear-gradient(currentColor, currentColor) center / 1px 100% no-repeat; }
+.tl { top: 7rem; left: var(--gutter); } .tr { top: 7rem; right: var(--gutter); } .bl { bottom: 3.25rem; left: var(--gutter); } .br { bottom: 3.25rem; right: var(--gutter); }
+.main { grid-column: 1 / -1; @include m.up(md) { grid-column: 1 / 9; } }
+.who { display: flex; flex-direction: column; align-items: flex-start; gap: 0.6rem; margin: 0 0 2rem;
+  b { @include m.display; font-weight: 600; text-transform: none; letter-spacing: -0.02em; font-size: clamp(1.6rem, 3.6vw, 3.25rem); line-height: 1; color: var(--bone); text-shadow: 0 2px 24px var(--ink); }
+  b::after { content: ''; display: block; width: 3.5rem; height: 3px; margin-top: 0.8rem; background: var(--signal); }
+  small { @include m.mono; color: var(--bone); opacity: 0.75; } }
+.title { @include m.display; margin: 0 0 1.75rem; font-size: clamp(2rem, 4.8vw, 5.25rem); line-height: 1.06; font-weight: 500; text-transform: none; letter-spacing: -0.035em; }
+.noisy { text-shadow: 2px 0 var(--phosphor), -2px 0 var(--signal); animation: jitter 3.4s steps(1) infinite; }
+@keyframes jitter {
+  0%, 90%, 100% { text-shadow: 2px 0 var(--phosphor), -2px 0 var(--signal); }
+  92% { text-shadow: 8px 0 var(--phosphor), -8px 0 var(--signal); }
+  95% { text-shadow: -6px 0 var(--phosphor), 6px 0 var(--signal); } }
+.pitch { margin: 0 0 2rem; max-width: 38ch; font-size: clamp(1.05rem, 0.95rem + 0.5vw, 1.35rem); line-height: 1.4; color: var(--bone); }
+.panel { grid-column: 1 / -1; align-self: end; padding: 1.25rem; border: 1px solid var(--line); background: rgba(10, 10, 11, 0.88);
+  @include m.up(md) { grid-column: 9 / 13; }
+  dl { margin: 1rem 0 0; } dl div { display: grid; grid-template-columns: 5.25rem 1fr; gap: 0.75rem; padding: 0.65rem 0; border-top: 1px solid var(--line); }
+  dt { @include m.mono; color: var(--mute); } dd { margin: 0; font-size: 0.95rem; line-height: 1.35; } }
+.pill { @include m.mono; display: inline-flex; gap: 0.6rem; align-items: center; margin: 0; padding: 0.4rem 0.8rem; border: 1px solid var(--signal); border-radius: 999px; color: var(--signal);
+  i { width: 6px; height: 6px; border-radius: 50%; background: var(--signal); animation: blink 1.6s steps(2) infinite; } }
+@keyframes blink { 50% { opacity: 0.2; } }
+.ctas { display: flex; flex-wrap: wrap; gap: 0.75rem;
+  a { @include m.mono; min-height: 54px; display: inline-flex; align-items: center; padding: 0 1.75rem; font-size: 0.8125rem; text-decoration: none; border: 1px solid var(--line); background: rgba(10, 10, 11, 0.55); transition: border-color 0.3s, color 0.3s, background 0.3s; }
+  a:hover { border-color: var(--signal); color: var(--signal); }
+  a.primary { background: var(--signal); border-color: var(--signal); color: var(--ink); }
+  a.primary:hover { background: transparent; color: var(--signal); } }
+.scroll { @include m.mono; position: absolute; right: var(--gutter); top: 50%; margin: 0; display: none; align-items: center; gap: 0.75rem; writing-mode: vertical-rl; color: var(--mute);
+  @include m.up(lg) { display: flex; }
+  &::after { content: ''; width: 1px; height: 56px; background: var(--bone); transform-origin: top; animation: drop 2.2s var(--ease-out) infinite; } }
+@keyframes drop { 0% { transform: scaleY(0); } 60% { transform: scaleY(1); } 100% { transform: scaleY(1); opacity: 0; } }

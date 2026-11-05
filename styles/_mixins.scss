@@ -1,0 +1,9 @@
+@use 'sass:map';
+$bp: (sm: 640px, md: 1024px, lg: 1440px);
+@mixin up($k) { @media (min-width: map.get($bp, $k)) { @content; } }
+@mixin mono {
+  font-family: var(--font-mono), monospace; font-size: clamp(0.6875rem, 0.66rem + 0.12vw, 0.75rem);
+  letter-spacing: 0.08em; text-transform: uppercase;
+}
+@mixin display { font-family: var(--font-display), sans-serif; font-weight: 700; text-transform: uppercase; letter-spacing: -0.03em; }
+@mixin grid12 { display: grid; grid-template-columns: repeat(12, 1fr); column-gap: var(--gutter); }

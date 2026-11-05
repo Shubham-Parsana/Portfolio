@@ -1,0 +1,6 @@
+@use '../styles/mixins' as m;
+.root { position: fixed; inset: 0; z-index: 100; background: var(--ink); display: grid; align-content: end; padding: var(--gutter); cursor: pointer; clip-path: inset(0); }
+.log { @include m.mono; display: grid; gap: 0.4rem; margin-bottom: 2rem; }
+.line { margin: 0; }
+.count { @include m.display; margin: 0; font-size: clamp(5rem, 22vw, 20rem); line-height: 0.8; color: var(--signal); font-variant-numeric: tabular-nums; }
+.hint { @include m.mono; color: var(--mute); margin: 1rem 0 0; }

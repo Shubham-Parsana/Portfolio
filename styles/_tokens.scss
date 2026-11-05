@@ -1,0 +1,8 @@
+:root {
+  --ink: #0a0a0b; --ink-2: #121214; --bone: #e9e6df; --mute: #8a8883;
+  --line: rgba(233, 230, 223, 0.14);
+  --signal: #ff6b2c;   // single accent
+  --phosphor: #e8a3b8; // CRT-glitch moments only
+  --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+  --gutter: clamp(16px, 2.5vw, 40px);
+}

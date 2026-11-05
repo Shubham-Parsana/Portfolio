@@ -1,0 +1,13 @@
+@use '../styles/mixins' as m;
+.root { position: fixed; inset: 0; z-index: 200; pointer-events: none; opacity: 0; transition: opacity 0.3s; &[data-ready='true'] { opacity: 1; } }
+.dot, .ring, .ping { position: fixed; top: 0; left: 0; border-radius: 50%; }
+.dot { width: 8px; height: 8px; background: var(--signal); transition: scale 0.25s var(--ease-out); }
+.ring { width: 34px; height: 34px; border: 1px solid rgba(255, 107, 44, 0.75); display: grid; place-items: center;
+  transition: width 0.4s var(--ease-out), height 0.4s var(--ease-out), background-color 0.25s, border-color 0.25s, scale 0.2s; }
+.label { @include m.mono; font-size: 0.6875rem; color: var(--ink); opacity: 0; transition: opacity 0.2s; }
+.ping { width: 64px; height: 64px; border: 1px solid var(--signal); opacity: 0; }
+.root[data-state='link'] { .ring { width: 58px; height: 58px; background: rgba(255, 107, 44, 0.14); } .dot { scale: 0; } }
+.root[data-state='view'], .root[data-state='scroll'] {
+  .ring { width: 92px; height: 92px; background: var(--signal); border-color: transparent; }
+  .label { opacity: 1; } .dot { scale: 0; } }
+.root[data-down='true'] .ring { scale: 0.85; }
